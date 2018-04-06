@@ -1,0 +1,29 @@
+<section id="video">
+
+<a href="/" class="back-button">
+  <i class="far fa-arrow-alt-circle-left"></i>
+</a>
+
+  <video autoplay >
+    <!-- REMEMBER TO ADD ALL OF THE FALLBACK SOURCES HERE -->
+    <source src="/video/{{ moviesrc }}" type="video/mp4">
+  </video>
+
+  <article class="commments" v-if="reviews.length > 0">
+    <div v-for="review in reviews">
+      <i class="post-date">${ review.comments_data}</i>
+      <p>
+        ${ review.comments_copy}
+      </p>
+    </div>
+    </article>
+
+    <aside class="add-comment">
+      <h4 class="review-heading">Add a Review</h4>
+      <span class="hidden movId"> {{ movie }}</span>
+      <input type="range" name="myRange" id="myRange" min="0" max="5" step="1" v-model="numStars">
+      <label for="myRange">${numStars}-Star Review</label>
+      <textarea name="review" id="review" placeholder="What did you think?" v-model="review"></textarea>
+      <input type="submit" value="Submit your review!" v-on:click="addReview">
+    </aside>
+</section>
